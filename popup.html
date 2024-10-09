@@ -1,14 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Scrape Product Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Product Comparison</title> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            width: 400px;
+            /* Set a fixed width for the popup */
+
+            /* max-width: 400px; */
+            /* Or use max-width to allow flexibility */
+
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        .product-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .product-container h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .buy-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .buy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Product Comparison</h1>
-    <!-- <button id="scrapeProduct">Scrape Product Info</button> -->
-    <pre id="output"></pre>
+
+    <!-- <h1>Product Comparison</h1> -->
+
+    <div class="product-container">
+        <h2 id="productTitle">Product Title</h2>
+        <div class="price" id="productPrice">€ --</div>
+    </div>
+    <a href="#" class="buy-btn">Find Alternatives</a>
+
+    <!-- 
+    <div class="footer">
+        <a href="#">More Products</a>
+    </div> -->
+
     <script src="popup.js"></script>
 </body>
 
