@@ -9,6 +9,15 @@
       document.getElementById("productPrice").textContent =
         response.product.price;
 
+      // Display the product image
+      const productImg = document.getElementById("productImg");
+      if (response.product.imgUrl) {
+        productImg.src = response.product.imgUrl;
+        productImg.style.display = "block"; // Make sure the image is visible
+      } else {
+        productImg.style.display = "none"; // Hide image if no URL is found
+      }
+
       // Optionally, update the 'Buy Now' link based on the product
       const buyButton = document.querySelector(".buy-btn");
       buyButton.href =

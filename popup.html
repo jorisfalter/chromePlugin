@@ -40,6 +40,26 @@
             text-align: center;
         }
 
+        .product-img {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Center and enlarge the image */
+        .product-img img {
+            /* width: 300px; */
+            max-width: 80%;
+
+            /* Make the image larger */
+            height: auto;
+            /* Maintain aspect ratio */
+            display: block;
+            margin: 0 auto;
+            /* Center the image */
+            border-radius: 8px;
+            /* Optional: add rounded corners */
+        }
+
         .price {
             font-size: 24px;
             color: #28a745;
@@ -77,6 +97,9 @@
     <!-- <h1>Product Comparison</h1> -->
 
     <div class="product-container">
+        <div class="product-img">
+            <img id="productImg" src="" alt="Product Image" style="max-width: 100%; display: none;">
+        </div>
         <h2 id="productTitle">Product Title</h2>
         <div class="price" id="productPrice">€ --</div>
     </div>

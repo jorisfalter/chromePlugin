@@ -38,9 +38,11 @@ function scrapeProductInfo() {
   const priceElement = document.querySelector(
     'div.c-cost-table__value[data-test="cost-overview-sub-total"] span'
   );
-
   console.log("priceElement");
   console.log(priceElement);
+
+  // Get the image element
+  const imgElement = document.querySelector(".order-item__img img");
 
   if (productElement) {
     const productTitle = productElement.getAttribute("title");
@@ -51,9 +53,22 @@ function scrapeProductInfo() {
       ? priceElement.textContent.trim()
       : "Price not found";
 
-    return { title: productTitle, id: productId, price: productPrice };
+    // Extract the image URL
+    const productImgUrl = imgElement ? imgElement.getAttribute("src") : "";
+
+    return {
+      title: productTitle,
+      id: productId,
+      price: productPrice,
+      imgUrl: productImgUrl,
+    };
   } else {
     console.log("no product");
-    return { title: "No product found", id: "N/A", price: "N/A" };
+    return {
+      title: "No product found",
+      id: "N/A",
+      price: "N/A",
+      imgUrl: "N/A",
+    };
   }
 }
