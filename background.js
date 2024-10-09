@@ -1,5 +1,3 @@
-// background.js
-
 // Listener to relay messages between popup and content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === "scrape_product_info") {
@@ -13,10 +11,21 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             target: { tabId: activeTab.id },
             func: scrapeProductInfo,
           },
-          (injectionResults) => {
+          async (injectionResults) => {
             // Send the scraped product information back to the popup
             if (injectionResults && injectionResults.length > 0) {
-              sendResponse({ product: injectionResults[0].result });
+              const productInfo = injectionResults[0].result;
+
+              // Send product info to an external server
+              const responseFromServer = await sendProductInfoToServer(
+                productInfo.title
+              );
+
+              // Return both the product info and the server's response
+              sendResponse({
+                product: productInfo,
+                serverResponse: responseFromServer,
+              });
             }
           }
         );
@@ -28,14 +37,24 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-// Function to scrape product info on the page (to be executed in content script context)
-function scrapeProductInfo() {
-  const productElement = document.querySelector(".order-item__title");
-  if (productElement) {
-    const productTitle = productElement.getAttribute("title");
-    const productId = productElement.getAttribute("id");
-    return { title: productTitle, id: productId };
-  } else {
-    return { title: "No product found", id: "N/A" };
+// Function to send product information to a server
+async function sendProductInfoToServer(productTitle) {
+  const url = "https://example.com/api/product"; // Replace with your actual URL
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productTitle }),
+    });
+
+    // Wait for the response from the server
+    const data = await response.json();
+    return data; // You can adjust what you return based on the server's response
+  } catch (error) {
+    console.error("Error sending product to server:", error);
+    return { error: "Failed to send product to the server" };
   }
 }
