@@ -25,3 +25,37 @@
     }
   });
 })();
+
+// Function to handle toggle button clicks
+function handleToggleButtonClick(event) {
+  // Remove 'active' class from all buttons
+  document.querySelectorAll(".toggle-buttons button").forEach((button) => {
+    button.classList.remove("active");
+  });
+
+  // Add 'active' class to the clicked button
+  event.target.classList.add("active");
+
+  // Update content based on the clicked button
+  const contentArea = document.getElementById("contentArea");
+  if (event.target.id === "fontBtn") {
+    contentArea.innerHTML =
+      "<h2>Font Settings</h2><p>Select your font preferences.</p>";
+  } else if (event.target.id === "colorBtn") {
+    contentArea.innerHTML =
+      "<h2>Color Settings</h2><p>Choose your color palette.</p>";
+  } else if (event.target.id === "assetsBtn") {
+    contentArea.innerHTML = "<h2>Assets</h2><p>Manage your assets.</p>";
+  }
+}
+
+// Add event listeners to toggle buttons
+document
+  .getElementById("fontBtn")
+  .addEventListener("click", handleToggleButtonClick);
+document
+  .getElementById("colorBtn")
+  .addEventListener("click", handleToggleButtonClick);
+document
+  .getElementById("assetsBtn")
+  .addEventListener("click", handleToggleButtonClick);

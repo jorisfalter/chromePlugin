@@ -18,6 +18,40 @@
             /* Or use max-width to allow flexibility */
         }
 
+        /* Toggle Button Container */
+        .toggle-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            background-color: #f4f4f4;
+            border-radius: 30px;
+            padding: 5px;
+        }
+
+        /* Toggle Button Styles */
+        .toggle-buttons button {
+            flex: 1;
+            background-color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Active button state */
+        .toggle-buttons button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Inactive button state */
+        .toggle-buttons button:not(.active) {
+            color: #888;
+        }
+
         .header {
             display: flex;
             align-items: center;
@@ -116,7 +150,7 @@
 
     <div class="header">
         <img src="logo.png" alt="Brand Logo" id="brandLogo"> <!-- Replace with the actual logo URL -->
-        <div class="brand-name">Klever</div>
+        <!-- <div class="brand-name">Klever</div> -->
     </div>
 
     <!-- <h1>Product Comparison</h1> -->
@@ -127,6 +161,11 @@
         </div>
         <h2 id="productTitle">Product Title</h2>
         <div class="price" id="productPrice">€ --</div>
+    </div>
+    <div class="toggle-buttons">
+        <button id="fontBtn" class="active">Price</button>
+        <button id="colorBtn">Delivery Time</button>
+        <button id="assetsBtn">Local Sellers</button>
     </div>
     <a href="#" class="buy-btn">Find Alternatives</a>
 
