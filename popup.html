@@ -16,7 +16,27 @@
 
             /* max-width: 400px; */
             /* Or use max-width to allow flexibility */
+        }
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #007bff;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .header img {
+            height: 40px;
+            /* Adjust logo height */
+            margin-right: 10px;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
         }
 
         h1 {
@@ -93,6 +113,11 @@
 </head>
 
 <body>
+
+    <div class="header">
+        <img src="logo.png" alt="Brand Logo" id="brandLogo"> <!-- Replace with the actual logo URL -->
+        <div class="brand-name">Klever</div>
+    </div>
 
     <!-- <h1>Product Comparison</h1> -->
 
