@@ -74,10 +74,26 @@
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 20px;
             color: #333;
             text-align: center;
+            margin-bottom: 15px;
+            margin-top: 30px;
         }
+
+        /* New class for the announcement message */
+        .announcement-text {
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #28a745;
+            /* Green color to match the price */
+
+        }
+
 
         .product-container {
             background-color: white;
@@ -143,6 +159,42 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        /* Alternative products section */
+        #alternativeProducts {
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .alternative-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .alternative-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .alternative-url {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .alternative-url:hover {
+            text-decoration: underline;
+        }
+
+        .alternative-price {
+            font-weight: bold;
+            color: #28a745;
+            text-align: right;
+        }
     </style>
 </head>
 
@@ -168,6 +220,7 @@
         <button id="assetsBtn">Local Sellers</button>
     </div>
     <a href="#" id="findAlternativesBtn" class="buy-btn">Find Alternatives</a>
+    <h1 class="announcement-text">Hooray, some shops are offering better prices!</h1>
     <div id="alternativeProducts">
         <div class="alternative-item">
             <a id="url1" class="alternative-url" href="#" target="_blank">Link 1</a>
