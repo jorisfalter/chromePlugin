@@ -33,12 +33,27 @@ function scrapeProductInfo() {
   const productElement = document.querySelector(".order-item__title");
   console.log("productElement");
   console.log(productElement);
+
+  // Get the price element using the specific class and data-test attribute
+  const priceElement = document.querySelector(
+    'div.c-cost-table__value[data-test="cost-overview-sub-total"] span'
+  );
+
+  console.log("priceElement");
+  console.log(priceElement);
+
   if (productElement) {
     const productTitle = productElement.getAttribute("title");
     const productId = productElement.getAttribute("id");
-    return { title: productTitle, id: productId };
+
+    // Extract the price, if found
+    const productPrice = priceElement
+      ? priceElement.textContent.trim()
+      : "Price not found";
+
+    return { title: productTitle, id: productId, price: productPrice };
   } else {
     console.log("no product");
-    return { title: "No product found", id: "N/A" };
+    return { title: "No product found", id: "N/A", price: "N/A" };
   }
 }

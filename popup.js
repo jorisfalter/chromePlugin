@@ -6,7 +6,7 @@
       console.log("Product Info Scraped:", response.product);
       document.getElementById(
         "output"
-      ).textContent = `Product Title: ${response.product.title}\nProduct ID: ${response.product.id}`;
+      ).textContent = `Product Title: ${response.product.title}\nProduct ID: ${response.product.id}\nProduct Price: ${response.product.price}`;
     }
   });
 })();
