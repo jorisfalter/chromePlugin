@@ -31,11 +31,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Function to scrape product info on the page (to be executed in content script context)
 function scrapeProductInfo() {
   const productElement = document.querySelector(".order-item__title");
+  console.log("productElement");
+  console.log(productElement);
   if (productElement) {
     const productTitle = productElement.getAttribute("title");
     const productId = productElement.getAttribute("id");
     return { title: productTitle, id: productId };
   } else {
+    console.log("no product");
     return { title: "No product found", id: "N/A" };
   }
 }
