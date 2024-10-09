@@ -59,3 +59,30 @@ document
 document
   .getElementById("assetsBtn")
   .addEventListener("click", handleToggleButtonClick);
+
+document.getElementById("findAlternativesBtn").addEventListener("click", () => {
+  // Extract product details
+  const productTitle = document.getElementById("productTitle").textContent;
+  const productPrice = document.getElementById("productPrice").textContent;
+
+  // Send product data to the Node.js backend
+  fetch("http://localhost:3000/find-alternatives", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      productTitle: productTitle,
+      productPrice: productPrice,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Display the alternatives from ChatGPT
+      alert(`Alternatives: ${data.alternatives}`);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Failed to fetch alternatives");
+    });
+});
